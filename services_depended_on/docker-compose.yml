@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - ./data/mongo/data:/data/db
+
+  mariadb:
+    image: mariadb:10
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MARIADB_DATABASE: sqlmaster
+      MARIADB_USER: admin
+      MARIADB_PASSWORD: password
+      MARIADB_ROOT_PASSWORD: password
+    volumes:
+      - ./data/mariadb/data:/var/lib/mysql
